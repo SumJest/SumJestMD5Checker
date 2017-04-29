@@ -1,0 +1,5 @@
+C:\Users\Шамиль\Documents\Visual Studio 2015\Projects\MD5Checker\cryptlib\bin\Release\cryptlib.dll
+C:\Users\Шамиль\Documents\Visual Studio 2015\Projects\MD5Checker\cryptlib\bin\Release\cryptlib.pdb
+C:\Users\Шамиль\Documents\Visual Studio 2015\Projects\MD5Checker\cryptlib\obj\Release\cryptlib.csprojResolveAssemblyReference.cache
+C:\Users\Шамиль\Documents\Visual Studio 2015\Projects\MD5Checker\cryptlib\obj\Release\cryptlib.dll
+C:\Users\Шамиль\Documents\Visual Studio 2015\Projects\MD5Checker\cryptlib\obj\Release\cryptlib.pdb
