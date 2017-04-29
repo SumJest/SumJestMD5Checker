@@ -8,7 +8,7 @@ using System.Net;
 
 namespace MD5Checker
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form // Many crutches, sorry
     {
         private string error = "Error";
         private string please_choose_file = "Please choose file";
@@ -209,7 +209,7 @@ namespace MD5Checker
             
             backgroundWorker1.RunWorkerAsync("compare|" + textBox1.Text);
         }
-        private void russianToolStripMenuItem_Click(object sender, EventArgs e)
+        private void russianToolStripMenuItem_Click(object sender, EventArgs e) 
         {
             label1.Text = "Файл:";
             label2.Text = "Хеш-сумма";
