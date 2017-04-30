@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.IO;
 using System.Net;
+using System.Text.RegularExpressions;
 
 namespace MD5Checker
 {
@@ -16,7 +17,6 @@ namespace MD5Checker
         private string please_wait = "Please wait, checher is busy!";
         private string successful = "Hashsum of the selected file matches the verification hashsum;Successful Comparison";
         private string not_successful = "Verification hashsum does not match the selected file hashsum!;Not Successful Comparison";
-        private string no_updates = "No updates available!";
         //private string default_language = "english";
         private string please_drop = "Please drop only one file!";
         private string file_empty = "File is empty!";
@@ -39,8 +39,6 @@ namespace MD5Checker
             
             try
             {
-
-                    
                     if (alg == Algorithm.MD5)
                     {
                         using (Stream file = File.OpenRead(path))
@@ -231,7 +229,6 @@ namespace MD5Checker
             please_wait = "Пожалуйста подождите, программа занята другой задачей!";
             please_drop = "Пожалуйста перетаскивайте только один файл!";
             please_choose_algorithm = "Пожалуйста выберете алгоритм!";
-            no_updates = "Нет доступных обновлений!";
             please_drop_file = "Пожалуйста перетащите файл, а не папку!";
             file_empty = "Файл пустой!";
             label4.Text = "Дата создания:";
@@ -258,7 +255,6 @@ namespace MD5Checker
             please_wait = "Please wait, checher is busy!";
             please_drop = "Please drop only one file!";
             file_empty = "File is empty!";
-            no_updates = "No updates available!";
             please_drop_file = "Please drop file, not directory!";
             file_does_not_exists = "File does not exists!";
             please_choose_algorithm = "Please choose algoritm!";
@@ -373,70 +369,63 @@ namespace MD5Checker
             }
         }
 
-        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            HttpWebRequest req;
-            HttpWebResponse res;
-            req = (HttpWebRequest)HttpWebRequest.Create("http://sumjest.ru/programsinfo/md5checker.txt");
-            res = (HttpWebResponse)req.GetResponse();
-            WebHeaderCollection header = res.Headers;
-
-            var encoding = ASCIIEncoding.ASCII;
-            using (var reader = new System.IO.StreamReader(res.GetResponseStream(), encoding))
-            {
-                string version = "";
-                string page = "";
-                string[] firstline = reader.ReadLine().Split(':');
-                if (firstline.Length != 2)
-                {
-                    for (int i = 1; i < firstline.Length; i++)
-                    {
-                        version += firstline[i];
-
-                    }
-                }
-                else
-                {
-                    version = firstline[1];
-                }
-                string[] secondline = reader.ReadLine().Split(':');
-                if (secondline.Length != 2)
-                {
-                    for (int i = 1; i < secondline.Length; i++)
-                    {
-                        if (page == "")
-                        {
-                            page = secondline[i];
-                        }
-                        else
-                        {
-                            page += ":" + secondline[i];
-                        }
-                    }
-                }
-                else
-                {
-                    page = secondline[1];
-                }
-
-                Version v = Version.Parse(version);
-                int ia = v.CompareTo(Version.Parse(Application.ProductVersion));
-                if (ia != 1)
-                {
-                    MessageBox.Show(no_updates, infoToolStripMenuItem.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                else
-                {
-                    CustomBox.ShowU(page, v);
-
-                }
-            }
-        }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+        private void GetChangeLog()
+        {
+            HttpWebRequest proxy_request = (HttpWebRequest)WebRequest.Create("http://sumjest.ru/index/md5checker/0-7");
+            proxy_request.Method = "GET";
+            proxy_request.Timeout = 20000;
+            HttpWebResponse resp = proxy_request.GetResponse() as HttpWebResponse;
+            string html = "";
+            using (StreamReader sr = new StreamReader(resp.GetResponseStream(), Encoding.UTF8))
+                html = sr.ReadToEnd();
+            string a = Regex.Match(html, @"<!--Dangerous--><p>Change log:([\s\S]*)\<!--Dangerous-->").ToString();
+            a = a.Replace("<!--Dangerous-->", "");
+            a = a.Replace("<p>", "");
+            a = a.Replace("</p>", "");
+            a = a.Replace("<br />", "");
+            a = a.Replace("&nbsp;", "  ");
+            MessageBox.Show(a);
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                HttpWebResponse res = (HttpWebResponse)HttpWebRequest.Create("http://sumjest.ru/programsinfo/programs.txt").GetResponse();
+                var encoding = ASCIIEncoding.ASCII;
+                using (var reader = new StreamReader(res.GetResponseStream(), encoding))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        string line = reader.ReadLine();
+                        string[] linea = line.Split(';');
+
+                        if (line.Split(';')[0].Contains("MD5Checker"))
+                        {
+                            Version v;
+                            if (Version.TryParse(line.Split(';')[1], out v)) { if (v.CompareTo(Version.Parse(Application.ProductVersion)) > 0) { menuStrip1.Items.Add("Вышла новая версия программы!", null, onNewClick); } }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        
+
+    }
+
+        private void onNewClick(object sender, EventArgs e)
+        {
+            GetChangeLog();
         }
     }
     public enum Algorithm

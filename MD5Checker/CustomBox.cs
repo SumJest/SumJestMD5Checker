@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace MD5Checker
 {
@@ -15,11 +10,7 @@ namespace MD5Checker
             Form form = new FormMsgBox();
             form.ShowDialog();
         }
-        public static void ShowU(string url, Version v)
-        {
-            Form f = new FormNV(url, v);
-            f.ShowDialog();
-        }
+
 
 
     }

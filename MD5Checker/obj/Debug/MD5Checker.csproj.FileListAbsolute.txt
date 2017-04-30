@@ -21,3 +21,13 @@ C:\Users\Шамиль\Documents\Visual Studio 2015\Projects\MD5Checker\MD5Checke
 C:\Users\Шамиль\Documents\Visual Studio 2015\Projects\MD5Checker\SumJestMD5Checker\MD5Checker\bin\Debug\MD5Checker.exe.config
 C:\Users\Шамиль\Documents\Visual Studio 2015\Projects\MD5Checker\SumJestMD5Checker\MD5Checker\obj\Debug\MD5Checker.exe
 C:\Users\Шамиль\Documents\Visual Studio 2015\Projects\MD5Checker\SumJestMD5Checker\MD5Checker\obj\Debug\MD5Checker.pdb
+C:\Users\Roman\Documents\Visual Studio 2015\Projects\SumJestMD5Checker\MD5Checker\bin\Debug\MD5Checker.exe.config
+C:\Users\Roman\Documents\Visual Studio 2015\Projects\SumJestMD5Checker\MD5Checker\obj\Debug\MD5Checker.exe
+C:\Users\Roman\Documents\Visual Studio 2015\Projects\SumJestMD5Checker\MD5Checker\obj\Debug\MD5Checker.pdb
+C:\Users\Roman\Documents\Visual Studio 2015\Projects\SumJestMD5Checker\MD5Checker\obj\Debug\MD5Checker.csprojResolveAssemblyReference.cache
+C:\Users\Roman\Documents\Visual Studio 2015\Projects\SumJestMD5Checker\MD5Checker\obj\Debug\MD5Checker.Form1.resources
+C:\Users\Roman\Documents\Visual Studio 2015\Projects\SumJestMD5Checker\MD5Checker\obj\Debug\MD5Checker.FormMsgBox.resources
+C:\Users\Roman\Documents\Visual Studio 2015\Projects\SumJestMD5Checker\MD5Checker\obj\Debug\MD5Checker.Properties.Resources.resources
+C:\Users\Roman\Documents\Visual Studio 2015\Projects\SumJestMD5Checker\MD5Checker\obj\Debug\MD5Checker.csproj.GenerateResource.Cache
+C:\Users\Roman\Documents\Visual Studio 2015\Projects\SumJestMD5Checker\MD5Checker\bin\Debug\MD5Checker.exe
+C:\Users\Roman\Documents\Visual Studio 2015\Projects\SumJestMD5Checker\MD5Checker\bin\Debug\MD5Checker.pdb

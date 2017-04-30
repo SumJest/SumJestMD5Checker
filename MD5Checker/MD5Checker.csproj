@@ -78,12 +78,6 @@
     <Compile Include="FormMsgBox.Designer.cs">
       <DependentUpon>FormMsgBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormNV.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormNV.Designer.cs">
-      <DependentUpon>FormNV.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -91,9 +85,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMsgBox.resx">
       <DependentUpon>FormMsgBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormNV.resx">
-      <DependentUpon>FormNV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
