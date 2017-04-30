@@ -393,6 +393,11 @@ namespace MD5Checker
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            CheckForUpdates();    
+
+        }
+        private void CheckForUpdates()
+        {
             try
             {
                 HttpWebResponse res = (HttpWebResponse)HttpWebRequest.Create("http://sumjest.ru/programsinfo/programs.txt").GetResponse();
@@ -417,10 +422,8 @@ namespace MD5Checker
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        
 
-    }
-
+        }
         private void onNewClick(object sender, EventArgs e)
         {
             GetChangeLog();
