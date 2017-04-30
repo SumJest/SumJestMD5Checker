@@ -55,7 +55,6 @@ namespace MD5Checker
                                     totalBytesRead += bytesRead;
 
                                     hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
-                                    MessageBox.Show(((int)((double)totalBytesRead / size * 100)).ToString());
                                     backgroundWorker1.ReportProgress((int)((double)totalBytesRead / size * 100));
 
 
@@ -86,7 +85,6 @@ namespace MD5Checker
                                     totalBytesRead += bytesRead;
 
                                     hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
-                                    MessageBox.Show(((int)((double)totalBytesRead / size * 100)).ToString());
                                     backgroundWorker1.ReportProgress((int)((double)totalBytesRead / size * 100));
 
 
